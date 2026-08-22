@@ -1,4 +1,4 @@
-# linux-overview
+# Unix/Linux Command Overview
 
 Overview of Unix and commands
 
@@ -21,7 +21,7 @@ Overview of Unix and commands
 
 ---
 
-## 2. Dateien
+## 2. Dateien & Links
 
 | Command | Bedeutung                     | Beispiel                 |
 | ------- | ----------------------------- | ------------------------ |
@@ -34,35 +34,36 @@ Overview of Unix and commands
 | `stat`  | Dateiinformationen anzeigen   | `stat file.txt`          |
 | `ln`    | Link erstellen                | `ln -s /path/file link`  |
 
-> ⚠️ `rm -rf` ist besonders gefährlich: Es löscht rekursiv und ohne Nachfrage.
+> ⚠️ `rm -rf`: Es löscht rekursiv und ohne Nachfrage.
 
 ---
 
-## 3. Dateien lesen & bearbeiten
+## 3. Dateien anzeigen & bearbeiten
 
-| Command   | Bedeutung                 | Beispiel               |
-| --------- | ------------------------- | ---------------------- |
-| `cat`     | Datei komplett ausgeben   | `cat file.txt`         |
-| `less`    | Datei seitenweise ansehen | `less /var/log/syslog` |
-| `more`    | Einfacher Pager           | `more file.txt`        |
-| `head`    | Anfang einer Datei        | `head -n 20 file.txt`  |
-| `tail`    | Ende einer Datei          | `tail -n 20 file.txt`  |
-| `tail -f` | Datei live verfolgen      | `tail -f app.log`      |
-| `nano`    | Einfacher Editor          | `nano file.txt`        |
-| `vim`     | Leistungsfähiger Editor   | `vim file.txt`         |
+| Command   | Bedeutung                      | Beispiel                                                                          |
+|-----------|--------------------------------|-----------------------------------------------------------------------------------|
+| `cat`     | Datei komplett ausgeben        | `cat file.txt`                                                                    |
+| `less`    | Datei seitenweise ansehen      | `less /var/log/syslog`                                                            |
+| `more`    | Einfacher Pager                | `more file.txt`                                                                   |
+| `head`    | Anfang einer Datei             | `head -n 20 file.txt`                                                             |
+| `tail`    | Ende einer Datei               | `tail -n 20 file.txt`                                                             |
+| `tail -f` | Datei live verfolgen           | `tail -f app.log`                                                                 |
+| `nano`    | Einfacher Editor               | `nano file.txt`                                                                   |
+| `vim`     | Leistungsfähiger Editor        | `vim file.txt` - i für Editmode, ESC : wq um vim zu verlassen und Datei speichern |
 
 ---
 
 ## 4. Suchen
 
-| Command   | Bedeutung                | Beispiel               |
-| --------- | ------------------------ | ---------------------- |
-| `find`    | Dateien suchen           | `find . -name "*.log"` |
-| `locate`  | Schnelle Dateisuche      | `locate nginx.conf`    |
-| `which`   | Position eines Programms | `which python`         |
-| `whereis` | Programm + Manual finden | `whereis bash`         |
-| `grep`    | Text suchen              | `grep "error" app.log` |
-| `grep -r` | Rekursiv suchen          | `grep -r "TODO" .`     |
+| Command   | Bedeutung                                 | Beispiel               |
+|-----------|-------------------------------------------|------------------------|
+| `find`    | Dateien und Verzeichnisse suchen          | `find . -name "*.log"` |
+| `locate`  | Schnelle Dateisuche                       | `locate nginx.conf`    |
+| `which`   | Pfad eines Programms anzeigen             | `which python`         |
+| `whereis` | Programm + Manual finden                  | `whereis bash`         |
+| `whatis`  | Kurze Beschreibung eines Befehls anzeigen | `whatis bash`          |
+| `grep`    | Text suchen                               | `grep "error" app.log` |
+| `grep -r` | Rekursiv suchen                           | `grep -r "TODO" .`     |
 
 ### Praktisches Beispiel
 
@@ -78,75 +79,50 @@ grep -rin "error" /var/log/
 
 ## 5. Textverarbeitung
 
-| Command | Bedeutung                    | Beispiel                     |
-| ------- | ---------------------------- | ---------------------------- |
-| `sort`  | Zeilen sortieren             | `sort names.txt`             |
-| `uniq`  | Duplikate entfernen          | `sort names.txt \| uniq`     |
-| `wc`    | Zeilen/Wörter/Zeichen zählen | `wc -l file.txt`             |
-| `cut`   | Spalten/Zeichen ausschneiden | `cut -d: -f1 /etc/passwd`    |
-| `tr`    | Zeichen ersetzen             | `tr 'a-z' 'A-Z'`             |
-| `sed`   | Text bearbeiten/ersetzen     | `sed 's/foo/bar/g' file.txt` |
-| `awk`   | Text/Spalten verarbeiten     | `awk '{print $1}' file.txt`  |
-| `diff`  | Dateien vergleichen          | `diff file1 file2`           |
+| Command | Bedeutung                       | Beispiel                      |
+| ------- |---------------------------------|-------------------------------|
+| `sort`  | Zeilen sortieren                | `sort names.txt`              |
+| `uniq`  | Duplikate entfernen             | `sort names.txt \| uniq`      |
+| `wc`    | Zeilen/Wörter/Zeichen zählen    | `wc -l file.txt`              |
+| `cut`   | Spalten/Zeichen ausschneiden    | `cut -d: -f1 /etc/passwd`     |
+| `tr`    | Zeichen ersetzen oder entfernen | `tr 'a-z' 'A-Z'`              |
+| `sed`   | Text bearbeiten/ersetzen        | `sed 's/foo/bar/g' file.txt`  |
+| `awk`   | Text/Spalten verarbeiten        | `awk '{print $1}' file.txt`   |
+| `diff`  | Dateien zeilenweise vergleichen | `diff file1 file2`            |
+| `cmp`   | Dateien byteweise vergleichen   | `cmp file1.txt file2.txt`     |
 
 ---
 
 ## 6. Pipes & Umleitungen
 
-Eines der wichtigsten Unix-Konzepte:
+| Funktion             | Syntax                 | Bedeutung                                                    | Beispiel                    |
+| -------------------- | ---------------------- | ------------------------------------------------------------ | --------------------------- |
+| **Pipe**             | `command1 \| command2` | Ausgabe von `command1` wird Eingabe von `command2`           | `ps aux \| grep nginx`      |
+| **Ausgabe umleiten** | `command > file`       | Ausgabe in Datei schreiben, vorhandenen Inhalt überschreiben | `ls > files.txt`            |
+| **Ausgabe anhängen** | `command >> file`      | Ausgabe an Datei anhängen                                    | `echo "hello" >> file.txt`  |
+| **Eingabe umleiten** | `command < file`       | Eingabe aus Datei lesen                                      | `sort < names.txt`          |
+| **Fehler umleiten**  | `command 2> file`      | Fehlermeldungen in Datei schreiben                           | `command 2> errors.txt`     |
+| **Ausgabe + Fehler** | `command > out 2>&1`   | Standardausgabe und Fehler in dieselbe Datei schreiben       | `command > output.txt 2>&1` |
 
-```bash
-command1 | command2
-```
-
-Beispiel:
+### Beispiel
 
 ```bash
 ps aux | grep nginx
 ```
-
-### Ausgabe in eine Datei
-
-```bash
-ls -la > files.txt
-```
-
-### Ausgabe an eine Datei anhängen
-
-```bash
-echo "hello" >> file.txt
-```
-
-### Eingabe aus Datei
-
-```bash
-sort < names.txt
-```
-
-### Fehlerausgabe umleiten
-
-```bash
-command 2> errors.txt
-```
-
-### Standardausgabe und Fehlerausgabe umleiten
-
-```bash
-command > output.txt 2>&1
-```
+Hier wird die Ausgabe von `ps aux` an `grep` weitergegeben.
 
 ---
 
 ## 7. Prozesse
 
 | Command   | Bedeutung                               | Beispiel        |
-| --------- | --------------------------------------- | --------------- |
+| --------- |-----------------------------------------| --------------- |
 | `ps`      | Prozesse anzeigen                       | `ps aux`        |
-| `top`     | Prozesse live anzeigen                  | `top`           |
+| `top`     | Prozesse live überwachen                | `top`           |
 | `htop`    | Komfortabler Prozessmonitor             | `htop`          |
 | `pgrep`   | Prozess nach Name suchen                | `pgrep nginx`   |
-| `kill`    | Prozess beenden                         | `kill 1234`     |
-| `killall` | Prozesse nach Name beenden              | `killall nginx` |
+| `kill`    | Prozess anhand der PID beenden          | `kill 1234`     |
+| `killall` | Prozesse anhand des Namens beenden      | `killall nginx` |
 | `jobs`    | Hintergrundjobs anzeigen                | `jobs`          |
 | `fg`      | Job in Vordergrund holen                | `fg %1`         |
 | `bg`      | Job im Hintergrund fortsetzen           | `bg %1`         |
@@ -162,15 +138,17 @@ command > output.txt 2>&1
 
 ## 8. Benutzer & Rechte
 
-| Command  | Bedeutung                          | Beispiel       |
-| -------- | ---------------------------------- | -------------- |
-| `whoami` | Aktuellen Benutzer anzeigen        | `whoami`       |
-| `id`     | Benutzer-ID/Gruppen anzeigen       | `id`           |
-| `who`    | Angemeldete Benutzer anzeigen      | `who`          |
-| `passwd` | Passwort ändern                    | `passwd`       |
-| `sudo`   | Befehl mit Admin-Rechten ausführen | `sudo command` |
-| `su`     | Benutzer wechseln                  | `su - user`    |
-| `groups` | Eigene Gruppen anzeigen            | `groups`       |
+| Command   | Bedeutung                          | Beispiel          |
+|-----------|------------------------------------|-------------------|
+| `whoami`  | Aktuellen Benutzer anzeigen        | `whoami`          |
+| `id`      | Benutzer-ID/Gruppen anzeigen       | `id`              |
+| `who`     | Angemeldete Benutzer anzeigen      | `who`             |
+| `passwd`  | Passwort ändern                    | `passwd userName` |
+| `sudo`    | Befehl mit Admin-Rechten ausführen | `sudo command`    |
+| `su`      | Benutzer wechseln                  | `su - user`       |
+| `groups`  | Gruppen des Benutzers anzeigen     | `groups`          |
+| `useradd` | Neuer Benutzer anlegen             | `useradd user1`   |
+| `adduser` | Neuer Benutzer interaktiv anlegen  | `adduser user1`   |
 
 ### Dateirechte anzeigen
 
@@ -215,98 +193,61 @@ chown user:group file.txt
 | `lsusb`    | USB-Geräte anzeigen                        |
 | `dmesg`    | Kernel-Meldungen anzeigen                  |
 
-### Praktisches Beispiel
-
-```bash
-du -sh *
-```
-
-Zeigt die Größe der Dateien und Ordner im aktuellen Verzeichnis.
-
 ---
 
 ## 10. Netzwerk
 
-| Command      | Bedeutung                       | Beispiel                        |
-| ------------ | ------------------------------- | ------------------------------- |
-| `ip`         | Netzwerk konfigurieren/anzeigen | `ip addr`                       |
-| `ping`       | Erreichbarkeit testen           | `ping 8.8.8.8`                  |
-| `curl`       | HTTP/API-Anfragen ausführen     | `curl https://example.com`      |
-| `wget`       | Dateien herunterladen           | `wget https://example.com/file` |
-| `ssh`        | Remote-Verbindung herstellen    | `ssh user@server`               |
-| `scp`        | Dateien über SSH kopieren       | `scp file user@server:/tmp/`    |
-| `sftp`       | Dateien über SSH übertragen     | `sftp user@server`              |
-| `ss`         | Netzwerkverbindungen anzeigen   | `ss -tulpn`                     |
-| `dig`        | DNS-Abfragen durchführen        | `dig example.com`               |
-| `traceroute` | Netzwerkroute anzeigen          | `traceroute example.com`        |
-| `hostname`   | Hostname anzeigen               | `hostname`                      |
+| Command      | Bedeutung                               | Beispiel                      |
+|--------------|-----------------------------------------|-------------------------------|
+| `ip`         | Netzwerk konfigurieren/anzeigen         | `ip addr`                     |
+| `ping`       | Erreichbarkeit testen                   | `ping 8.8.8.8`                |
+| `curl`       | HTTP/API-Anfragen ausführen             | `curl https://example.com`    |
+| `wget`       | Dateien herunterladen                   | `wget https://example.com/file` |
+| `ssh`        | Remote-Verbindung herstellen            | `ssh user@server`             |
+| `scp`        | Dateien über SSH kopieren               | `scp file user@server:/tmp/`  |
+| `sftp`       | Dateien über SSH übertragen             | `sftp user@server`            |
+| `ss`         | Netzwerkverbindungen und Ports anzeigen | `ss -tulpn`                   |
+| `dig`        | DNS-Abfragen durchführen                | `dig example.com`             |
+| `traceroute` | Netzwerkroute anzeigen                  | `traceroute example.com`      |
+| `hostname`   | Hostname anzeigen                       | `hostname`                    |
+| `netstat`    | Ports anzeigen                          | `netstat -tulpn`              |
+| `iptables`   | Firewall                                | `iptables -A INPUT -p tcp --dport 22 -j ACCEPT` |
+| `nftables`   | Firewall - auf modernen Linux Dist.     |  |
 
 ---
 
 ## 11. Archive & Kompression
 
-### TAR-Archiv erstellen
-
-```bash
-tar -cf archive.tar folder/
-```
-
-### TAR-Archiv entpacken
-
-```bash
-tar -xf archive.tar
-```
-
-### TAR + gzip erstellen
-
-```bash
-tar -czf archive.tar.gz folder/
-```
-
-### TAR.GZ entpacken
-
-```bash
-tar -xzf archive.tar.gz
-```
-
-### GZIP
-
-```bash
-gzip file.txt
-gunzip file.txt.gz
-```
+| Format     | Aktion             | Befehl                            |
+| ---------- | ------------------ | --------------------------------- |
+| **ZIP**    | Archiv erstellen   | `zip zipname.zip folder/`         |
+| **ZIP**    | Archiv entpacken   | `unzip zipname.zip`               |
+| **TAR**    | Archiv erstellen   | `tar -cf archive.tar folder/`     |
+| **TAR**    | Archiv entpacken   | `tar -xf archive.tar`             |
+| **TAR.GZ** | Archiv erstellen   | `tar -czf archive.tar.gz folder/` |
+| **TAR.GZ** | Archiv entpacken   | `tar -xzf archive.tar.gz`         |
+| **GZIP**   | Datei komprimieren | `gzip file.txt`                   |
+| **GZIP**   | Datei entpacken    | `gunzip file.txt.gz`              |
 
 ---
 
-## 12. Pakete installieren
+## 12. Pakete verwalten
 
-### Debian / Ubuntu
-
-```bash
-sudo apt update
-sudo apt install nginx
-sudo apt remove nginx
-```
-
-### Fedora / RHEL
-
-```bash
-sudo dnf install nginx
-sudo dnf remove nginx
-```
-
-### Arch Linux
-
-```bash
-sudo pacman -S nginx
-sudo pacman -R nginx
-```
+| Distribution        | Aktion                     | Befehl                   |
+| ------------------- | -------------------------- | ------------------------ |
+| **Debian / Ubuntu** | Paketquellen aktualisieren | `sudo apt update`        |
+| **Debian / Ubuntu** | Paket installieren         | `sudo apt install nginx` |
+| **Debian / Ubuntu** | Paket entfernen            | `sudo apt remove nginx`  |
+| **Fedora / RHEL**   | Paket installieren         | `sudo dnf install nginx` |
+| **Fedora / RHEL**   | Paket entfernen            | `sudo dnf remove nginx`  |
+| **Arch Linux**      | Paket installieren         | `sudo pacman -S nginx`   |
+| **Arch Linux**      | Paket entfernen            | `sudo pacman -R nginx`   |
 
 ---
 
 ## 13. Dienste & systemd
 
-Auf modernen Linux-Systemen sehr wichtig:
+Auf vielen modernen Linux-Systemen werden Dienste mit systemd verwaltet.
 
 ```bash
 systemctl status nginx
@@ -354,35 +295,13 @@ echo "$NAME"
 
 ## 15. Hilfe & Dokumentation
 
-### Manual
-
-```bash
-man ls
-```
-
-### Kurze Hilfe
-
-```bash
-ls --help
-```
-
-### Info-Seiten
-
-```bash
-info coreutils
-```
-
-### Nach passenden Befehlen suchen
-
-```bash
-apropos network
-```
-
-### Herausfinden, welches Programm verwendet wird
-
-```bash
-command -v python
-```
+| Zweck                          | Befehl              | Beschreibung                                            |
+| ------------------------------ | ------------------- | ------------------------------------------------------- |
+| **Manpage anzeigen**           | `man ls`            | Zeigt die ausführliche Dokumentation zu `ls`            |
+| **Kurze Hilfe anzeigen**       | `ls --help`         | Zeigt eine kurze Übersicht der Optionen                 |
+| **Info-Seiten anzeigen**       | `info coreutils`    | Zeigt ausführlichere GNU-Info-Dokumentation             |
+| **Nach Befehlen suchen**       | `apropos network`   | Sucht in den Beschreibungen der Manpages nach „network“ |
+| **Programm-Pfad herausfinden** | `command -v python` | Zeigt, welches `python`-Programm verwendet wird         |
 
 ---
 
@@ -390,43 +309,11 @@ command -v python
 
 Die eigentliche Stärke von Unix entsteht durch das **Kombinieren** von Befehlen.
 
-## Pipe
-
-```bash
-command1 | command2
-```
-
-## Ausgabe umleiten
-
-```bash
-command > output.txt
-```
-
-## Ausgabe anhängen
-
-```bash
-command >> output.txt
-```
-
-## Fehler umleiten
-
-```bash
-command 2> errors.txt
-```
-
-## Beispiel
-
-```bash
-ps aux | grep nginx
-```
-
-Oder eine komplexere Pipeline:
-
 ```bash
 cat access.log | grep "404" | sort | uniq -c | sort -nr
 ```
 
-Dabei wird:
+Die Pipeline verarbeitet die Daten Schritt für Schritt:
 
 1. `cat` → Datei ausgeben
 2. `grep` → nur HTTP-404-Zeilen auswählen
