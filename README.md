@@ -4,6 +4,27 @@ Overview of Unix and commands
 
 # Commands
 
+<div id="top"></div>
+
+# Inhaltsverzeichnis
+
+- [1. Navigation & Verzeichnisse](#1-navigation--verzeichnisse)
+- [2. Dateien & Links](#2-dateien--links)
+- [3. Dateien anzeigen & bearbeiten](#3-dateien-anzeigen--bearbeiten)
+- [4. Suchen](#4-suchen)
+- [5. Textverarbeitung](#5-textverarbeitung)
+- [6. Pipes & Umleitungen](#6-pipes--umleitungen)
+- [7. Prozesse](#7-prozesse)
+- [8. Benutzer & Rechte](#8-benutzer--rechte)
+- [9. Speicher & Systeminformationen](#9-speicher--systeminformationen)
+- [10. Netzwerk](#10-netzwerk)
+- [11. Archive & Kompression](#11-archive--kompression)
+- [12. Pakete verwalten](#12-pakete-verwalten)
+- [13. Dienste & systemd](#13-dienste--systemd)
+- [14. Shell & Umgebungsvariablen](#14-shell--umgebungsvariablen)
+- [15. Hilfe & Dokumentation](#15-hilfe--dokumentation)
+
+
 # Unix/Linux Commands – Übersicht
 
 ## 1. Navigation & Verzeichnisse
@@ -19,6 +40,7 @@ Overview of Unix and commands
 | `rmdir` | Leeres Verzeichnis löschen     | `rmdir test`  |
 | `tree`  | Verzeichnisbaum anzeigen       | `tree`        |
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 2. Dateien & Links
@@ -35,7 +57,8 @@ Overview of Unix and commands
 | `ln`    | Link erstellen                | `ln -s /path/file link`  |
 
 > ⚠️ `rm -rf`: Es löscht rekursiv und ohne Nachfrage.
-
+ 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 3. Dateien anzeigen & bearbeiten
@@ -51,6 +74,7 @@ Overview of Unix and commands
 | `nano`    | Einfacher Editor               | `nano file.txt`                                                                   |
 | `vim`     | Leistungsfähiger Editor        | `vim file.txt` - i für Editmode, ESC : wq um vim zu verlassen und Datei speichern |
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 4. Suchen
@@ -75,6 +99,7 @@ grep -rin "error" /var/log/
 * `-i` = Groß-/Kleinschreibung ignorieren
 * `-n` = Zeilennummer anzeigen
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 5. Textverarbeitung
@@ -91,6 +116,7 @@ grep -rin "error" /var/log/
 | `diff`  | Dateien zeilenweise vergleichen | `diff file1 file2`            |
 | `cmp`   | Dateien byteweise vergleichen   | `cmp file1.txt file2.txt`     |
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 6. Pipes & Umleitungen
@@ -111,6 +137,7 @@ ps aux | grep nginx
 ```
 Hier wird die Ausgabe von `ps aux` an `grep` weitergegeben.
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 7. Prozesse
@@ -134,6 +161,7 @@ Hier wird die Ausgabe von `ps aux` an `grep` weitergegeben.
 ./server &
 ```
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 8. Benutzer & Rechte
@@ -175,6 +203,7 @@ chmod +x script.sh
 chown user:group file.txt
 ```
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 9. Speicher & Systeminformationen
@@ -193,6 +222,7 @@ chown user:group file.txt
 | `lsusb`    | USB-Geräte anzeigen                        |
 | `dmesg`    | Kernel-Meldungen anzeigen                  |
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 10. Netzwerk
@@ -214,6 +244,7 @@ chown user:group file.txt
 | `iptables`   | Firewall                                | `iptables -A INPUT -p tcp --dport 22 -j ACCEPT` |
 | `nftables`   | Firewall - auf modernen Linux Dist.     |                                                 |
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 11. Archive & Kompression
@@ -229,6 +260,7 @@ chown user:group file.txt
 | **GZIP**   | Datei komprimieren | `gzip file.txt`                   |
 | **GZIP**   | Datei entpacken    | `gunzip file.txt.gz`              |
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 12. Pakete verwalten
@@ -305,7 +337,7 @@ chown user:group file.txt
 | Programm suchen                  | `flatpak search firefox`                      |
 | Programminformationen anzeigen   | `flatpak info org.mozilla.firefox`            |
 
-
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 13. Dienste & systemd
@@ -332,6 +364,7 @@ journalctl -u nginx
 journalctl -f
 ```
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 14. Shell & Umgebungsvariablen
@@ -354,6 +387,7 @@ export NAME="Max"
 echo "$NAME"
 ```
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 ## 15. Hilfe & Dokumentation
@@ -366,6 +400,7 @@ echo "$NAME"
 | **Nach Befehlen suchen**       | `apropos network`   | Sucht in den Beschreibungen der Manpages nach „network“ |
 | **Programm-Pfad herausfinden** | `command -v python` | Zeigt, welches `python`-Programm verwendet wird         |
 
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
 
 # Besonders wichtig: Unix-Befehle kombinieren
