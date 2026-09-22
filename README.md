@@ -197,22 +197,22 @@ chown user:group file.txt
 
 ## 10. Netzwerk
 
-| Command      | Bedeutung                               | Beispiel                      |
-|--------------|-----------------------------------------|-------------------------------|
-| `ip`         | Netzwerk konfigurieren/anzeigen         | `ip addr`                     |
-| `ping`       | Erreichbarkeit testen                   | `ping 8.8.8.8`                |
-| `curl`       | HTTP/API-Anfragen ausführen             | `curl https://example.com`    |
-| `wget`       | Dateien herunterladen                   | `wget https://example.com/file` |
-| `ssh`        | Remote-Verbindung herstellen            | `ssh user@server`             |
-| `scp`        | Dateien über SSH kopieren               | `scp file user@server:/tmp/`  |
-| `sftp`       | Dateien über SSH übertragen             | `sftp user@server`            |
-| `ss`         | Netzwerkverbindungen und Ports anzeigen | `ss -tulpn`                   |
-| `dig`        | DNS-Abfragen durchführen                | `dig example.com`             |
-| `traceroute` | Netzwerkroute anzeigen                  | `traceroute example.com`      |
-| `hostname`   | Hostname anzeigen                       | `hostname`                    |
-| `netstat`    | Ports anzeigen                          | `netstat -tulpn`              |
+| Command      | Bedeutung                               | Beispiel                                        |
+|--------------|-----------------------------------------|-------------------------------------------------|
+| `ip`         | Netzwerk konfigurieren/anzeigen         | `ip addr`                                       |
+| `ping`       | Erreichbarkeit testen                   | `ping 8.8.8.8`                                  |
+| `curl`       | HTTP/API-Anfragen ausführen             | `curl https://example.com`                      |
+| `wget`       | Dateien herunterladen                   | `wget https://example.com/file`                 |
+| `ssh`        | Remote-Verbindung herstellen            | `ssh user@server`                               |
+| `scp`        | Dateien über SSH kopieren               | `scp file user@server:/tmp/`                    |
+| `sftp`       | Dateien über SSH übertragen             | `sftp user@server`                              |
+| `ss`         | Netzwerkverbindungen und Ports anzeigen | `ss -tulpn`                                     |
+| `dig`        | DNS-Abfragen durchführen                | `dig example.com`                               |
+| `traceroute` | Netzwerkroute anzeigen                  | `traceroute example.com`                        |
+| `hostname`   | Hostname anzeigen                       | `hostname`                                      |
+| `netstat`    | Ports anzeigen                          | `netstat -tulpn`                                |
 | `iptables`   | Firewall                                | `iptables -A INPUT -p tcp --dport 22 -j ACCEPT` |
-| `nftables`   | Firewall - auf modernen Linux Dist.     |  |
+| `nftables`   | Firewall - auf modernen Linux Dist.     |                                                 |
 
 ---
 
@@ -233,15 +233,78 @@ chown user:group file.txt
 
 ## 12. Pakete verwalten
 
-| Distribution        | Aktion                     | Befehl                   |
-| ------------------- | -------------------------- | ------------------------ |
-| **Debian / Ubuntu** | Paketquellen aktualisieren | `sudo apt update`        |
-| **Debian / Ubuntu** | Paket installieren         | `sudo apt install nginx` |
-| **Debian / Ubuntu** | Paket entfernen            | `sudo apt remove nginx`  |
-| **Fedora / RHEL**   | Paket installieren         | `sudo dnf install nginx` |
-| **Fedora / RHEL**   | Paket entfernen            | `sudo dnf remove nginx`  |
-| **Arch Linux**      | Paket installieren         | `sudo pacman -S nginx`   |
-| **Arch Linux**      | Paket entfernen            | `sudo pacman -R nginx`   |
+### Debian / Ubuntu
+
+| Aktion                                | Befehl                         |
+|---------------------------------------|--------------------------------|
+| Paketquellen aktualisieren            | `sudo apt update`              |
+| Installierte Pakete aktualisieren     | `sudo apt upgrade`             |
+| System vollständig aktualisieren      | `sudo apt full-upgrade`        |
+| Paket installieren                    | `sudo apt install nginx`       |
+| Paket entfernen                       | `sudo apt remove nginx`        |
+| Paket inkl. Konfiguration entfernen   | `sudo apt purge nginx`         |
+| Paket suchen                          | `apt search nginx`             |
+| Installierte Pakete auflisten         | `apt list --installed`         |
+| Paketinformationen anzeigen           | `apt show nginx`               |
+| Nicht mehr benötigte Pakete entfernen | `sudo apt autoremove`          |
+| `.deb`-Paket installieren             | `sudo apt install ./paket.deb` |
+| Paketstatus anzeigen                  | `dpkg -s nginx`                |
+| Alle installierten Pakete auflisten   | `dpkg --get-selections`        |
+
+### Fedora / RHEL
+
+| Aktion                                | Befehl                   |
+|---------------------------------------|--------------------------|
+| Paket-Metadaten aktualisieren         | `sudo dnf makecache`     |
+| System aktualisieren                  | `sudo dnf upgrade`       |
+| Paket installieren                    | `sudo dnf install nginx` |
+| Paket entfernen                       | `sudo dnf remove nginx`  |
+| Paket suchen                          | `dnf search nginx`       |
+| Installierte Pakete auflisten         | `dnf list --installed`   |
+| Verfügbare Pakete auflisten           | `dnf list available`     |
+| Paketinformationen anzeigen           | `dnf info nginx`         |
+| Nicht mehr benötigte Pakete entfernen | `sudo dnf autoremove`    |
+| Installierbare Updates anzeigen       | `dnf check-update`       |
+
+### Arch Linux
+
+| Aktion                                     | Befehl                   |
+|--------------------------------------------|--------------------------|
+| System aktualisieren                       | `sudo pacman -Syu`       |
+| Paket installieren                         | `sudo pacman -S nginx`   |
+| Paket entfernen                            | `sudo pacman -R nginx`   |
+| Paket inkl. Abhängigkeiten entfernen       | `sudo pacman -Rns nginx` |
+| Paket suchen                               | `pacman -Ss nginx`       |
+| Installierte Pakete auflisten              | `pacman -Q`              |
+| Explizit installierte Pakete auflisten     | `pacman -Qe`             |
+| Paketinformationen anzeigen                | `pacman -Si nginx`       |
+| Installiertes Paket prüfen                 | `pacman -Q nginx`        |
+| Nicht mehr benötigte Abhängigkeiten finden | `pacman -Qdt`            |
+| Paketdateien anzeigen                      | `pacman -Ql nginx`       |
+| Paket-Cache bereinigen                     | `sudo pacman -Sc`        |
+
+### Snap (zusätzliche Paketverwaltung)
+
+| Aktion                             | Befehl                      |
+|------------------------------------|-----------------------------|
+| Installierte Snap-Pakete auflisten | `snap list`                 |
+| Paket installieren                 | `sudo snap install firefox` |
+| Paket entfernen                    | `sudo snap remove firefox`  |
+| Pakete aktualisieren               | `sudo snap refresh`         |
+| Paket suchen                       | `snap find firefox`         |
+| Paketinformationen anzeigen        | `snap info firefox`         |
+
+### Flatpak (zusätzliche Paketverwaltung)
+
+| Aktion                           | Befehl                                        |
+|----------------------------------|-----------------------------------------------|
+| Installierte Programme auflisten | `flatpak list --app`                          |
+| Programm installieren            | `flatpak install flathub org.mozilla.firefox` |
+| Programm entfernen               | `flatpak uninstall org.mozilla.firefox`       |
+| Alle Programme aktualisieren     | `flatpak update`                              |
+| Programm suchen                  | `flatpak search firefox`                      |
+| Programminformationen anzeigen   | `flatpak info org.mozilla.firefox`            |
+
 
 ---
 
