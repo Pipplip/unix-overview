@@ -79,15 +79,16 @@ Overview of Unix and commands
 
 ## 4. Suchen
 
-| Command   | Bedeutung                                 | Beispiel               |
-|-----------|-------------------------------------------|------------------------|
-| `find`    | Dateien und Verzeichnisse suchen          | `find . -name "*.log"` |
-| `locate`  | Schnelle Dateisuche                       | `locate nginx.conf`    |
-| `which`   | Pfad eines Programms anzeigen             | `which python`         |
-| `whereis` | Programm + Manual finden                  | `whereis bash`         |
-| `whatis`  | Kurze Beschreibung eines Befehls anzeigen | `whatis bash`          |
-| `grep`    | Text suchen                               | `grep "error" app.log` |
-| `grep -r` | Rekursiv suchen                           | `grep -r "TODO" .`     |
+| Command   | Bedeutung                                 | Beispiel                                                                                           |
+|-----------|-------------------------------------------|----------------------------------------------------------------------------------------------------|
+| `find`    | Dateien suchen                            | `find . -name "*.log"`                                                                             |
+| `find`    | Verzeichnisse suchen                      | `find /home -type d -iname "*logs*"` (Hier: nur in /home suchen und mit iname nicht case sensitiv) |
+| `locate`  | Schnelle Dateisuche                       | `locate nginx.conf`                                                                                |
+| `which`   | Pfad eines Programms anzeigen             | `which python`                                                                                     |
+| `whereis` | Programm + Manual finden                  | `whereis bash`                                                                                     |
+| `whatis`  | Kurze Beschreibung eines Befehls anzeigen | `whatis bash`                                                                                      |
+| `grep`    | Text in Dateien suchen                    | `grep "error" app.log`                                                                             |
+| `grep -r` | Rekursiv suchen                           | `grep -r "TODO" .`                                                                                 |
 
 ### Praktisches Beispiel
 
