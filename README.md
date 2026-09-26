@@ -2,8 +2,6 @@
 
 Overview of Unix and commands
 
-# Commands
-
 <div id="top"></div>
 
 # Inhaltsverzeichnis
@@ -23,9 +21,8 @@ Overview of Unix and commands
 - [13. Dienste & systemd](#13-dienste--systemd)
 - [14. Shell & Umgebungsvariablen](#14-shell--umgebungsvariablen)
 - [15. Hilfe & Dokumentation](#15-hilfe--dokumentation)
+- [16. Keyboard Shortcuts](#16-keyboard-shortcuts)
 
-
-# Unix/Linux Commands – Übersicht
 
 ## 1. Navigation & Verzeichnisse
 
@@ -403,6 +400,107 @@ echo "$NAME"
 
 <p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
 ---
+
+## 16. Keyboard Shortcuts
+
+#### 🏆 Top Commands – Linux Terminal Shortcuts
+
+| Shortcut       | Funktion                         |
+|----------------|----------------------------------|
+| `Ctrl + A`     | Zum Zeilenanfang                 |
+| `Ctrl + E`     | Zum Zeilenende                   |
+| `Alt + B / F`  | Wort zurück / vor                |
+| `Ctrl + W`     | Wort löschen                     |
+| `Ctrl + U / K` | Alles links / rechts löschen     |
+| `Ctrl + Y`     | Gelöschten Text wieder einsetzen |
+| `Ctrl + R`     | Befehlsverlauf durchsuchen       |
+| `Ctrl + C`     | Laufenden Prozess abbrechen      |
+| `Ctrl + L`     | Terminal leeren                  |
+
+
+#### 🧭 Navigation & Cursor
+
+| Shortcut       | Funktion             |
+|----------------|----------------------|
+| `Ctrl + A`     | Zeilenanfang         |
+| `Ctrl + E`     | Zeilenende           |
+| `Alt + B`      | Ein Wort zurück      |
+| `Alt + F`      | Ein Wort vor         |
+| `Ctrl + ← / →` | Wort zurück / vor    |
+| `Home / End`   | Zeilenanfang / -ende |
+
+#### ✏️ Bearbeiten & Löschen
+
+| Shortcut   | Funktion                          |
+|------------|-----------------------------------|
+| `Ctrl + W` | Wort vor dem Cursor löschen       |
+| `Alt + D`  | Wort nach dem Cursor löschen      |
+| `Ctrl + U` | Alles links vom Cursor löschen    |
+| `Ctrl + K` | Alles rechts vom Cursor löschen   |
+| `Ctrl + Y` | Gelöschten Text wieder einsetzen  |
+| `Ctrl + _` | Letzte Änderung rückgängig machen |
+| `Ctrl + T` | Letzte zwei Zeichen vertauschen   |
+| `Alt + T`  | Letzte zwei Wörter vertauschen    |
+
+#### 📋 Kopieren, Einfügen & Markieren
+
+| Shortcut                    | Funktion                        |
+|-----------------------------|---------------------------------|
+| `Ctrl + Shift + C`          | Kopieren                        |
+| `Ctrl + Shift + V`          | Einfügen                        |
+| `Shift + ← / →`             | Zeichenweise markieren          |
+| `Ctrl + Shift + ← / →`      | Ganze Wörter markieren          |
+| `Shift + PageUp / PageDown` | Terminal hoch / runter scrollen |
+
+#### 🔍 History & Autovervollständigung
+
+| Shortcut / Befehl | Funktion                              |
+|-------------------|---------------------------------------|
+| `↑ / ↓`           | Vorheriger / nächster Befehl          |
+| `Ctrl + P / N`    | Vorheriger / nächster Befehl          |
+| `Ctrl + R`        | Verlauf durchsuchen                   |
+| `Ctrl + G`        | Verlaufssuche abbrechen               |
+| `Tab`             | Autovervollständigung                 |
+| `Tab + Tab`       | Mögliche Vervollständigungen anzeigen |
+| `!!`              | Letzten Befehl erneut ausführen       |
+| `!$`              | Letztes Argument des letzten Befehls  |
+| `history`         | Befehlsverlauf anzeigen               |
+
+#### ⚙️ Prozesse & Shell
+
+| Shortcut / Befehl | Funktion                          |
+|-------------------|-----------------------------------|
+| `Ctrl + C`        | Laufenden Prozess abbrechen       |
+| `Ctrl + Z`        | Prozess pausieren                 |
+| `Ctrl + D`        | EOF / Shell verlassen             |
+| `fg`              | Prozess in Vordergrund holen      |
+| `bg`              | Prozess im Hintergrund fortsetzen |
+| `jobs`            | Hintergrundprozesse anzeigen      |
+| `kill <PID>`      | Prozess beenden                   |
+
+#### 🖥️ Terminal
+
+| Shortcut / Befehl | Funktion                    |
+|-------------------|-----------------------------|
+| `Ctrl + L`        | Bildschirm leeren (`clear`) |
+| `Ctrl + S`        | Terminal-Ausgabe pausieren  |
+| `Ctrl + Q`        | Terminal-Ausgabe fortsetzen |
+| `clear`           | Terminal leeren             |
+| `exit`            | Shell verlassen             |
+
+#### 🗂️ Tabs & Fenster
+
+| Shortcut                   | Funktion                  |
+|----------------------------|---------------------------|
+| `Ctrl + Shift + T`         | Neuer Terminal-Tab        |
+| `Ctrl + Shift + W`         | Terminal-Tab schließen    |
+| `Ctrl + PageUp / PageDown` | Vorheriger / nächster Tab |
+| `Ctrl + Shift + N`         | Neues Terminalfenster     |
+| `F11`                      | Vollbild                  |
+
+<p align="right"><sup><a href="#top">Nach oben ↑</a></sup></p>
+---
+
 
 # Besonders wichtig: Unix-Befehle kombinieren
 
